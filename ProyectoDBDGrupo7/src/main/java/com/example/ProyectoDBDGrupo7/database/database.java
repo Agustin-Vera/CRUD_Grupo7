@@ -1,4 +1,4 @@
-package database;
+package com.example.ProyectoDBDGrupo7.database;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
