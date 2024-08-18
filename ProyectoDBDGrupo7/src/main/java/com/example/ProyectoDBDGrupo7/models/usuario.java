@@ -1,7 +1,6 @@
 package com.example.ProyectoDBDGrupo7.models;
 
 public class usuario {
-
     private long idusuario;
     private String nombreusuario;
     private String correo;
