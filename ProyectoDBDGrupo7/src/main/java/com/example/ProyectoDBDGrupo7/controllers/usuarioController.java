@@ -10,12 +10,8 @@ import java.util.List;
 /*
     @RestController: Marca la clase como un controlador REST, indicando que los métodos de la clase responderán a las
     solicitudes HTTP y devolverán datos en formato JSON o XML
-
-    @RequestMapping("/usuario"): Establece la ruta base para todas las solicitudes manejadas por este
-    controlador como /usuario`
  */
 
-// Anotaciones de Spring
 @RestController
 @RequestMapping("/usuario")
 public class usuarioController {
@@ -29,7 +25,6 @@ public class usuarioController {
     }
 
     // CREATE
-    // Si se quieren mostrar mensajes de retroalimentacion, van aqui
     @PostMapping("/create")
     @ResponseBody
     public usuario create(@RequestBody usuario usuario) {

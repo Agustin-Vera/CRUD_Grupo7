@@ -12,7 +12,6 @@ import java.util.List;
     @Repository: Marca la clase como un componente de repositorio de Spring, indicando que esta clase se encarga
     de la interacción con la base de datos
  */
-
 @Repository
 public class usuarioRepositoryImp implements usuarioRepository {
 
@@ -48,7 +47,6 @@ public class usuarioRepositoryImp implements usuarioRepository {
         }
         return null;
     }
-
 
     /*
     Método getAllUsers: Proporciona una implementación del método para recuperar todos los usuarios de la base de datos:
@@ -100,9 +98,7 @@ public class usuarioRepositoryImp implements usuarioRepository {
         return usuario;
     }
 
-
     // DELETE
-    // Falta agregar el tema de eliminar registros de tablas anidadas (Ej: El registro del carro de el uusario a eliminar)
     @Override
     public void borrarUsuario(int id) {
         String sql = "DELETE FROM usuario WHERE idusuario = :id";
