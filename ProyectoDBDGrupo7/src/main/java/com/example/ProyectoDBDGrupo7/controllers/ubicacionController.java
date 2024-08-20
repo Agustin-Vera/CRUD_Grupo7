@@ -1,7 +1,6 @@
 package com.example.ProyectoDBDGrupo7.controllers;
 
 import com.example.ProyectoDBDGrupo7.models.ubicacion;
-import com.example.ProyectoDBDGrupo7.services.ubicacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

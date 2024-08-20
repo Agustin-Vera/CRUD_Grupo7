@@ -21,7 +21,7 @@ public class boletadecompraRepositoryImp implements boletadecompraRepository{
     public boletadecompra create(boletadecompra boletadecompra) {
         try (Connection con = sql2o.open()) {
             String sql = "INSERT INTO BOLETA_DE_COMPRA(FechaBoleta, MontoBoleta, IdCarro, IdMedioPago)" +
-                    "VALUES (: FechaBoleta, MontoBoleta, IdCarro, IdMedioPago)";
+                    "VALUES (: FechaBoleta, :MontoBoleta, :IdCarro, :IdMedioPago)";
             long idboleta = con.createQuery(sql, true)
                     .addParameter("FechaBoleta", boletadecompra.getFechaBoleta())
                     .addParameter("MontoBoleta", boletadecompra.getMontoBoleta())
