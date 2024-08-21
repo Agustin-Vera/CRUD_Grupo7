@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping
+@RequestMapping("/medioPago")
 
 public class medioDePagoController {
     private final medioDePagoService medioDePagoService;

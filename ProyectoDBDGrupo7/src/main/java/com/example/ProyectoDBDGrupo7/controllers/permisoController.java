@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping
+@RequestMapping("/permiso")
 
 public class permisoController {
     private final permisoService permisoService;
