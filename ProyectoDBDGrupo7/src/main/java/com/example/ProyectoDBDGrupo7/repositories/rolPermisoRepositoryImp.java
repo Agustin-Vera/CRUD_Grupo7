@@ -1,6 +1,6 @@
 package com.example.ProyectoDBDGrupo7.repositories;
 
-import com.example.ProyectoDBDGrupo7.models.permiso;
+import com.example.ProyectoDBDGrupo7.models.rolPermiso;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
@@ -9,26 +9,26 @@ import org.sql2o.Sql2o;
 import java.util.List;
 
 @Repository
-public class permisoRepositoryImp implements permisoRepository {
+public class rolPermisoRepositoryImp implements rolPermisoRepository {
     private final Sql2o sql2o;
 
     @Autowired
-    public permisoRepositoryImp(Sql2o sql2o) {this.sql2o = sql2o;}
+    public rolPermisoRepositoryImp(Sql2o sql2o) {this.sql2o = sql2o;}
 
     @Override
-    public permiso create(permiso permiso) {
-        String sql = "INSERT INTO PERMISO(NombrePermiso, DescripcionPermiso)\n" +
-                "VALUES (:NombrePermiso, :DescripcionPermiso)";
+    public rolPermiso create(rolPermiso rolPermiso) {
+        String sql = "INSERT INTO ROL_PERMISO(IdPermiso, IdRol)\n" +
+                "VALUES (:IdPermiso, :IdRol)";
 
         try (Connection con = sql2o.open()) {
             long id = con.createQuery(sql, true)
-                    .addParameter("NombrePermiso", permiso.getNombrePermiso())
-                    .addParameter("DescripcionPermiso", permiso.getDescripcionPermiso())
+                    .addParameter("IdPermiso", rolPermiso.getIdPermiso())
+                    .addParameter("IdRol", rolPermiso.getIdRol())
                     .executeUpdate()
                     .getKey(Long.class);
 
-            permiso.setIdPermiso(id);
-            return permiso;
+            rolPermiso.setIdRolPermiso(id);
+            return rolPermiso;
         }
         catch (Exception e) {
             System.out.println("Error"+ e.getMessage());
@@ -38,10 +38,10 @@ public class permisoRepositoryImp implements permisoRepository {
 
     //Read
     @Override
-    public List<permiso> getAll() {
-        String sql = "SELECT * FROM PERMISO ORDER BY idpermiso ASC";
+    public List<rolPermiso> getAll() {
+        String sql = "SELECT * FROM ROL_PERMISO ORDER BY IdRolPermiso ASC";
         try (Connection con = sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(permiso.class);
+            return con.createQuery(sql).executeAndFetch(rolPermiso.class);
 
         }
         catch (Exception e) {
@@ -51,12 +51,12 @@ public class permisoRepositoryImp implements permisoRepository {
     }
 
     @Override
-    public permiso getById(int id) {
-        String sql = "SELECT * FROM PERMISO WHERE IdPermiso = :id";
+    public rolPermiso getById(int id) {
+        String sql = "SELECT * FROM ROL_PERMISO WHERE IdRolPermiso = :id";
         try (Connection conn = sql2o.open()) {
-            List<permiso> resultados = conn.createQuery(sql)
+            List<rolPermiso> resultados = conn.createQuery(sql)
                     .addParameter("id", id)
-                    .executeAndFetch(permiso.class);
+                    .executeAndFetch(rolPermiso.class);
 
             if (!resultados.isEmpty()) {
                 return resultados.get(0);
@@ -72,14 +72,14 @@ public class permisoRepositoryImp implements permisoRepository {
 
     //UPDATE
     @Override
-    public permiso update(permiso permiso, int id) {
-        String sql = "UPDATE PERMISO SET NombrePermiso = :NombrePermiso WHERE IdPermiso = :id";
+    public rolPermiso update(rolPermiso rolPermiso, int id) {
+        String sql = "UPDATE ROL_PERMISO SET IdPermiso = :IdPermiso WHERE IdRolPermiso = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id",id)
-                    .addParameter("NombrePermiso",permiso.getNombrePermiso())
+                    .addParameter("IdPermiso",rolPermiso.getIdPermiso())
                     .executeUpdate();
-            return permiso;
+            return rolPermiso;
         }
         catch (Exception e) {
             System.out.println("Error"+e.getMessage());
@@ -90,7 +90,7 @@ public class permisoRepositoryImp implements permisoRepository {
     //DELETE
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM PERMISO WHERE IdPermiso  = :id";
+        String sql = "DELETE FROM ROL_PERMISO WHERE IdRolPermiso  = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).addParameter("id",id).executeUpdate();
         }

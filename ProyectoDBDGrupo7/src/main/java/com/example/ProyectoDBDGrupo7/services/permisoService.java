@@ -15,7 +15,7 @@ public class permisoService {
     public permisoService(permisoRepository permisoRepository){this.permisoRepository = permisoRepository;}
 
     //CREATE
-    public permiso create(permiso rol){return permisoRepository.create(rol);}
+    public permiso create(permiso permiso){return permisoRepository.create(permiso);}
 
     //READ
     public List<permiso> getAll() {return permisoRepository.getAll();}
