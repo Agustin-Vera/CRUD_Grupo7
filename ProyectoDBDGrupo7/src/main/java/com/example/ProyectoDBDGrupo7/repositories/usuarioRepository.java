@@ -20,5 +20,5 @@ public interface usuarioRepository {
     void borrarUsuario(int id);
 
     //LOGIN
-    boolean loginUsuario(String correo, String contraseña);
+    usuario loginUsuario(String correo, String contraseña);
 }

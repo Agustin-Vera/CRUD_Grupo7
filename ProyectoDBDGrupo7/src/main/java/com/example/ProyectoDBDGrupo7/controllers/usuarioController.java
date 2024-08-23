@@ -61,7 +61,7 @@ public class usuarioController {
 
     //LOGIN
     @PostMapping("/login")
-    public boolean login(@RequestBody usuario usuario) {
+    public usuario login(@RequestBody usuario usuario) {
         return usuarioService.loginUser(usuario.getCorreo(),usuario.getContraseña());
     }
 }

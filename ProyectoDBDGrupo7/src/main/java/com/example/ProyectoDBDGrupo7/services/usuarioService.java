@@ -46,7 +46,7 @@ public class usuarioService {
     }
 
     //LOGIN
-    public boolean loginUser(String correo, String contraseña) {
+    public usuario loginUser(String correo, String contraseña) {
         return usuarioRepository.loginUsuario(correo,contraseña);
     }
 }

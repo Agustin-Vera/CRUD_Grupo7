@@ -111,17 +111,16 @@ public class usuarioRepositoryImp implements usuarioRepository {
     }
 
     //LOGIN
-    public boolean loginUsuario(String correo,String contraseña){
+    public usuario loginUsuario(String correo,String contraseña){
         String sql = "SELECT * FROM usuario WHERE correo = :correo AND contraseña = :contraseña";
         try (Connection con = sql2o.open()) {
-            con.createQuery(sql).addParameter("correo",correo)
-                    .addParameter("contraseña",contraseña)
+            return con.createQuery(sql).addParameter("correo", correo)
+                    .addParameter("contraseña", contraseña)
                     .executeAndFetchFirst(usuario.class);
-            return true;
         }
         catch (Exception e){
             System.out.println("No se pudo realizar el login del usuario"+e.getMessage());
-            return false;
+            return null;
         }
     }
 }
