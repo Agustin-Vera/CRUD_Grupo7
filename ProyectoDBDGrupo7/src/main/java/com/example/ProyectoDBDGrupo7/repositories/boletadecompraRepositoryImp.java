@@ -41,20 +41,24 @@ public class boletadecompraRepositoryImp implements boletadecompraRepository{
     // Obtiene la lista completa de todas las boletas registradas
     @Override
     public List<boletadecompra> GetAllBoletas(){
+        String sql = "SELECT * FROM BOLETA_DE_COMPRA ORDER BY idBoleta ASC";
         try (Connection con = sql2o.open()) {
-            String sql = "SELECT * FROM BOLETA_DE_COMPRA";
-            return con.createQuery(sql).executeAndFetch(boletadecompra.class);
+            return con.createQuery(sql)
+                    .executeAndFetch(boletadecompra.class);
         }catch (Exception e){
             System.out.println(e);
+            return null;
         }
-        return null;
     }
 
+
     @Override
-    public List<boletadecompra> GetForId(int idboletadecompra){
+    public List<boletadecompra> GetForId(int idboleta){
         try (Connection con = sql2o.open()) {
-            String sql = "SELECT * FROM BOLETA_DE_COMPRA WHERE IdBoleta = :idboletadecompra";
-            return con.createQuery(sql).addParameter("IdBoleta",idboletadecompra).executeAndFetch(boletadecompra.class);
+            String sql = "SELECT * FROM BOLETA_DE_COMPRA WHERE idboleta = :idboleta";
+            return con.createQuery(sql)
+                    .addParameter("idboleta",idboleta)
+                    .executeAndFetch(boletadecompra.class);
         }catch (Exception e){
             System.out.println(e);
         }

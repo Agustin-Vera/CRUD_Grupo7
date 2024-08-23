@@ -1,22 +1,22 @@
 package com.example.ProyectoDBDGrupo7.models;
 
 public class productoCategoriaProducto {
-    private Long idProductoCategoria;
+    private Long idProducto_Categoria;
     private Integer idProducto;
     private Integer idCategoriaProducto;
 
     public productoCategoriaProducto(Long idProductoCategoria, Integer idProducto, Integer idCategoriaProducto) {
-        this.idProductoCategoria = idProductoCategoria;
+        this.idProducto_Categoria = idProductoCategoria;
         this.idProducto = idProducto;
         this.idCategoriaProducto = idCategoriaProducto;
     }
 
     public Long getIdProductoCategoria() {
-        return idProductoCategoria;
+        return idProducto_Categoria;
     }
 
     public void setIdProductoCategoria(Long idProductoCategoria) {
-        this.idProductoCategoria = idProductoCategoria;
+        this.idProducto_Categoria = idProductoCategoria;
     }
 
     public Integer getIdProducto() {
@@ -38,7 +38,7 @@ public class productoCategoriaProducto {
     @Override
     public String toString() {
         return "productoCategoriaProducto{" +
-                "idProductoCategoria=" + idProductoCategoria +
+                "idProductoCategoria=" + idProducto_Categoria +
                 ", idProducto=" + idProducto +
                 ", idCategoriaProducto=" + idCategoriaProducto +
                 '}';

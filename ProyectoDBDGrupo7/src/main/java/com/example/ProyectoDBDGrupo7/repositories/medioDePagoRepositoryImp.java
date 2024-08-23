@@ -20,7 +20,7 @@ public class medioDePagoRepositoryImp implements medioDePagoRepository {
     public medioDePago create(medioDePago medioDePago) {
         String sql = "INSERT INTO MEDIO_DE_PAGO(NombreMedioPago, DescripcionMedioPago)" +
                 "VALUES(:NombreMedioPago, :DescripcionMedioPago)" +
-                "RETURNING IdMedioDePago;";
+                "RETURNING idMedioPago;";
 
         try (Connection con = sql2o.open()) {
             long idmedioDePago = con.createQuery(sql, true)
@@ -40,7 +40,7 @@ public class medioDePagoRepositoryImp implements medioDePagoRepository {
     //READ
     @Override
     public List<medioDePago> getAll() {
-        String sql = "SELECT * FROM MEDIO_DE_PAGO ORDER BY IdMedioDePago ASC";
+        String sql = "SELECT * FROM MEDIO_DE_PAGO ORDER BY idMedioPago ASC";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(medioDePago.class);
 
@@ -53,7 +53,7 @@ public class medioDePagoRepositoryImp implements medioDePagoRepository {
 
     @Override
     public medioDePago getMedioDePago(int id) {
-        String sql = "SELECT * FROM MEDIO_DE_PAGO WHERE idMedioDePago = :id";
+        String sql = "SELECT * FROM MEDIO_DE_PAGO WHERE idMedioPago = :id";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("id", id)
@@ -69,7 +69,7 @@ public class medioDePagoRepositoryImp implements medioDePagoRepository {
     //UPDATE ESTA RAROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     @Override
     public medioDePago update(medioDePago medioDePago, int id) {
-        String sql = "UPDATE MEDIO_DE_PAGO SET nombre = :nombre, detalles = :detalles WHERE idMedioDePago = :id";
+        String sql = "UPDATE MEDIO_DE_PAGO SET nombre = :nombre, detalles = :detalles WHERE idMedioPago = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -87,7 +87,7 @@ public class medioDePagoRepositoryImp implements medioDePagoRepository {
     //DELETE
     @Override
     public void deleteMedioDePago(int id){
-        String sql = "DELETE FROM MEDIO_DE_PAGO WHERE idMedioDePago = :id";
+        String sql = "DELETE FROM MEDIO_DE_PAGO WHERE idMedioPago = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)

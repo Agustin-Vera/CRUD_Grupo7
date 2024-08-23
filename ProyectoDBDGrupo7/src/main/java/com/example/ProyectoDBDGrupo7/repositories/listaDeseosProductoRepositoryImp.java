@@ -20,7 +20,7 @@ public class listaDeseosProductoRepositoryImp implements listaDeseosProductoRepo
     @Override
     public listaDeseosProducto create(listaDeseosProducto listaDeseosProducto) {
         String sql = "INSERT INTO LISTA_DESEOS_PRODUCTO(IdListaDeseos, IdProducto)" +
-                "VALUES (:IdListaDeseos, :IdProducto) RETURNING idListaProducto;";
+                "VALUES (:IdListaDeseos, :IdProducto) RETURNING idListaProducto";
 
         try (Connection conn = sql2o.open()) {
             long id = conn.createQuery(sql,true)
@@ -41,7 +41,7 @@ public class listaDeseosProductoRepositoryImp implements listaDeseosProductoRepo
     //READ
     @Override
     public List<listaDeseosProducto> getAll() {
-        String sql = "SELECT * FROM LISTA_DESEOS_PRODUCTO ORDER BY idLista_Producto ASC";
+        String sql = "SELECT * FROM LISTA_DESEOS_PRODUCTO ORDER BY idListaProducto ASC";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql).executeAndFetch(listaDeseosProducto.class);
         }
@@ -53,7 +53,7 @@ public class listaDeseosProductoRepositoryImp implements listaDeseosProductoRepo
 
     @Override
     public List<listaDeseosProducto> getListaDeseosProducto(int id){
-        String sql = "SELECT * FROM LISTA_DESEOS_PRODUCTO WHERE idLista_Producto = :id";
+        String sql = "SELECT * FROM LISTA_DESEOS_PRODUCTO WHERE idListaProducto = :id";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql)
                     .addParameter("id",id)
@@ -68,7 +68,7 @@ public class listaDeseosProductoRepositoryImp implements listaDeseosProductoRepo
     //UPDATE
     @Override
     public listaDeseosProducto update(listaDeseosProducto listaDeseosProducto, int id) {
-        String sql = "UPDATE LISTA_DESEOS_PRODUCTO SET IdProducto = :IdProducto WHERE idLista_Producto = :id";
+        String sql = "UPDATE LISTA_DESEOS_PRODUCTO SET IdProducto = :IdProducto WHERE idListaProducto = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id",id)
@@ -85,7 +85,7 @@ public class listaDeseosProductoRepositoryImp implements listaDeseosProductoRepo
     //DELETE
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM LISTA_DESEOS_PRODUCTO WHERE idLista_Producto = :id";
+        String sql = "DELETE FROM LISTA_DESEOS_PRODUCTO WHERE idListaProducto = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql).addParameter("id",id).executeUpdate();
         }

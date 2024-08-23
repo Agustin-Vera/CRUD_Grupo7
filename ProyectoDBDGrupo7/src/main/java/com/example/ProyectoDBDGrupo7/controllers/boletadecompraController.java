@@ -30,13 +30,13 @@ public class boletadecompraController {
     public List<boletadecompra> GetAll()
     {return boletadecompraService.AllBoletas();}
 
-    @GetMapping("/get/user{id}")
+    @GetMapping("/get/{id}")
     @ResponseBody
     public List<boletadecompra> GetBoletaUser(@PathVariable int id)
     {return boletadecompraService.BoletaPorId(id);}
 
     // Delete
-    @DeleteMapping("/delete/boleta{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseBody
     public void deleteboleta(@PathVariable int id)
     { boletadecompraService.DeleteBoleta(id); }

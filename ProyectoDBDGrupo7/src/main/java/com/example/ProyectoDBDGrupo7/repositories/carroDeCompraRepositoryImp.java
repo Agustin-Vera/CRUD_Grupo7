@@ -20,7 +20,7 @@ public class carroDeCompraRepositoryImp implements carroDeCompraRepository {
     public carroDeCompras create(carroDeCompras carroDeCompras) {
         String sql = "INSERT INTO CARRO_DE_COMPRAS(IdUsuario)" +
                 "VALUES(:IdUsuario)" +
-                "RETURNING IdUsuario;";
+                "RETURNING IdCarro";
 
         try (Connection con = sql2o.open()) {
             long id = con.createQuery(sql, true)
@@ -40,7 +40,7 @@ public class carroDeCompraRepositoryImp implements carroDeCompraRepository {
     //Read
     @Override
     public List<carroDeCompras> getAllcarroDeCompras() {
-        String sql = "SELECT * FROM CARRO_DE_COMPRAS ORDER BY idcarroDeCompras ASC";
+        String sql = "SELECT * FROM CARRO_DE_COMPRAS ORDER BY idCarro ASC";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(carroDeCompras.class);
             // Mapea los resultados a la clase Producto
@@ -75,7 +75,7 @@ public class carroDeCompraRepositoryImp implements carroDeCompraRepository {
     //UPDATE
     @Override
     public carroDeCompras update(carroDeCompras carroDeCompras, int id) {
-        String sql = "UPDATE CARRO_DE_COMPRAS SET IdUsuario = :IdUsuario WHERE idcarroDeCompras = :id";
+        String sql = "UPDATE CARRO_DE_COMPRAS SET IdUsuario = :IdUsuario WHERE idCarro = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id",id)
@@ -92,7 +92,7 @@ public class carroDeCompraRepositoryImp implements carroDeCompraRepository {
     //DELETE
     @Override
     public void deletecarroDeCompras(int id) {
-        String sql = "DELETE FROM PRODUCTO_CARRODECOMPRAS WHERE PRODUCTO_CARRODECOMPRAS.IdcarroDeCompras  = :id";
+        String sql = "DELETE FROM PRODUCTO_CARRODECOMPRAS WHERE PRODUCTO_CARRODECOMPRAS.idCarro  = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).addParameter("id",id).executeUpdate();
         }

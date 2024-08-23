@@ -23,7 +23,6 @@ public class boletadecompraService {
     {return boletadecompraRepository.create(boletadecompra);}
 
     // Read
-
     public List<boletadecompra> AllBoletas()
     {return boletadecompraRepository.GetAllBoletas();}
 

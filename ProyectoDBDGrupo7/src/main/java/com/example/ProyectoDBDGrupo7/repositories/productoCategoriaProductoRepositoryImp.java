@@ -21,7 +21,7 @@ public class productoCategoriaProductoRepositoryImp implements productoCategoria
     @Override
     public productoCategoriaProducto create(productoCategoriaProducto productoCategoriaProducto) {
         String sql = "INSERT INTO PRODUCTO_CATEGORIAPRODUCTO(IdProducto, IdCategoriaProducto)" +
-                "VALUES (:IdProducto, :IdCategoriaProducto) RETURNING idProductoCategoriaProducto";
+                "VALUES (:IdProducto, :IdCategoriaProducto) RETURNING idProducto_Categoria";
 
         try (Connection conn = sql2o.open()) {
             long id = conn.createQuery(sql,true)
@@ -42,7 +42,7 @@ public class productoCategoriaProductoRepositoryImp implements productoCategoria
     //READ
     @Override
     public List<productoCategoriaProducto> getAll() {
-        String sql = "SELECT * FROM PRODUCTO_CATEGORIAPRODUCTO ORDER BY idProductoCategoriaProducto ASC";
+        String sql = "SELECT * FROM PRODUCTO_CATEGORIAPRODUCTO ORDER BY idProducto_Categoria ASC";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql).executeAndFetch(productoCategoriaProducto.class);
         }
@@ -54,7 +54,7 @@ public class productoCategoriaProductoRepositoryImp implements productoCategoria
 
     @Override
     public List<productoCategoriaProducto> getProductoCategoriaProducto(int id){
-        String sql = "SELECT * FROM PRODUCTO_CATEGORIAPRODUCTO WHERE idProductoCategoriaProducto = :id";
+        String sql = "SELECT * FROM PRODUCTO_CATEGORIAPRODUCTO WHERE idProducto_Categoria = :id";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql)
                     .addParameter("id",id)
@@ -69,7 +69,7 @@ public class productoCategoriaProductoRepositoryImp implements productoCategoria
     //UPDATE
     @Override
     public productoCategoriaProducto update(productoCategoriaProducto productoCategoriaProducto, int id) {
-        String sql = "UPDATE PRODUCTO_CATEGORIAPRODUCTO SET IdProducto = :IdProducto WHERE idProductoCategoriaProducto = :id";
+        String sql = "UPDATE PRODUCTO_CATEGORIAPRODUCTO SET IdProducto = :IdProducto WHERE idProducto_Categoria = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id",id)
@@ -86,7 +86,7 @@ public class productoCategoriaProductoRepositoryImp implements productoCategoria
     //DELETE
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM PRODUCTO_CATEGORIAPRODUCTO WHERE idProductoCategoriaProducto = :id";
+        String sql = "DELETE FROM PRODUCTO_CATEGORIAPRODUCTO WHERE idProducto_Categoria = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql).addParameter("id",id).executeUpdate();
         }

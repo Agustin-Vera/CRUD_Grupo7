@@ -22,7 +22,7 @@ public class listadeseosRepositoryImp implements listadeseosRepository {
     @Override
     public listadeseos create(listadeseos listadeseos){
         try (Connection con = sql2o.open()) {
-            String sql = "INSERT INTO listadeseos(IdUsuario) VALUES (:IdUsuario)";
+            String sql = "INSERT INTO lista_deseos(IdUsuario) VALUES (:IdUsuario)";
             long idlistadeseos = con.createQuery(sql,true)
                     .addParameter("IdUsuario",listadeseos.getIdUsuario())
                     .executeUpdate()
@@ -40,7 +40,7 @@ public class listadeseosRepositoryImp implements listadeseosRepository {
     @Override
     public List<listadeseos> getAllList(){
         try (Connection con = sql2o.open()) {
-            String sql = "SELECT * FROM listadeseos";
+            String sql = "SELECT * FROM lista_deseos";
             return con.createQuery(sql).executeAndFetch(listadeseos.class);
         }catch (Exception e){
             System.out.println(e);
@@ -50,7 +50,7 @@ public class listadeseosRepositoryImp implements listadeseosRepository {
     @Override
     public listadeseos GetListForId(int IdUsuario){
         try (Connection con = sql2o.open()) {
-            String sql = "SELECT * FROM listadeseos WHERE IdUsuario = :IdUsuario";
+            String sql = "SELECT * FROM lista_deseos WHERE IdUsuario = :IdUsuario";
             return con.createQuery(sql).addParameter("IdUsuario",IdUsuario).executeAndFetchFirst(listadeseos.class);
         }catch (Exception e){
             System.out.println(e);
@@ -62,7 +62,7 @@ public class listadeseosRepositoryImp implements listadeseosRepository {
     @Override
     public void Delete(int IdUsuario){
         try (Connection con = sql2o.open()) {
-            String sql = "DELETE FROM listadeseos WHERE IdUsuario = :IdUsuario";
+            String sql = "DELETE FROM lista_deseos WHERE IdUsuario = :IdUsuario";
             con.createQuery(sql).addParameter("IdUsuario",IdUsuario).executeUpdate();
         }catch (Exception e){
             System.out.println(e);

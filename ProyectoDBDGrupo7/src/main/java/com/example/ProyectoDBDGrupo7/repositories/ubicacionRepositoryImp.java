@@ -58,8 +58,8 @@ public class ubicacionRepositoryImp implements ubicacionRepository {
     @Override
     public List<ubicacion> LocationForId(int idusuario) {
         try (Connection con = sql2o.open()) {
-            String sql = "SELECT * FROM UBICACION WHERE IdUsuario = :idusuario";
-            return con.createQuery(sql).addParameter("IdUsuario", idusuario).executeAndFetch(ubicacion.class);
+            String sql = "SELECT * FROM UBICACION WHERE idusuario = :idusuario";
+            return con.createQuery(sql).addParameter("idusuario", idusuario).executeAndFetch(ubicacion.class);
         }catch (Exception e) {
             System.out.println(e);
         }

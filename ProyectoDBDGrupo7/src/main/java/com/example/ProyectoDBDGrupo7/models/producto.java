@@ -7,7 +7,7 @@ public class producto {
     private String tipoProducto;
     private Integer stock;
     private Integer precio;
-    private String url;
+    private String urlProducto;
 
     public producto(Long idProducto, String nombreProducto, String descripcionProducto, String tipoProducto, Integer stock, Integer precio, String url) {
         this.idProducto = idProducto;
@@ -16,7 +16,7 @@ public class producto {
         this.tipoProducto = tipoProducto;
         this.stock = stock;
         this.precio = precio;
-        this.url = url;
+        this.urlProducto = url;
     }
 
     public Long getIdProducto() {
@@ -68,11 +68,11 @@ public class producto {
     }
 
     public String getUrl() {
-        return url;
+        return urlProducto;
     }
 
     public void setUrl(String url) {
-        this.url = url;
+        this.urlProducto = url;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class producto {
                 ", tipoProducto='" + tipoProducto + '\'' +
                 ", stock=" + stock +
                 ", precio=" + precio +
-                ", url='" + url + '\'' +
+                ", url='" + urlProducto + '\'' +
                 '}';
     }
 }

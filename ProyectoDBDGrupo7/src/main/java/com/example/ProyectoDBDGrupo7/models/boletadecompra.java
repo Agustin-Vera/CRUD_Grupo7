@@ -2,44 +2,68 @@ package com.example.ProyectoDBDGrupo7.models;
 import java.util.Date;
 
 public class boletadecompra {
-    private long IdBoletadeCompra;
+    private long IdBoleta;
     private Date FechaBoleta;
-    private int MontoBoleta;
+    private int montoboleta;
     private Integer IdCarro;
     private Integer IdMedioPago;
 
     public boletadecompra(long IdBoletadeCompra, Date FechaBoleta, int MontoBoleta, Integer IdCarro, Integer IdMedioPago) {
-        this.IdBoletadeCompra = IdBoletadeCompra;
+        this.IdBoleta = IdBoletadeCompra;
         this.FechaBoleta = FechaBoleta;
-        this.MontoBoleta = MontoBoleta;
+        this.montoboleta = MontoBoleta;
         this.IdCarro = IdCarro;
         this.IdMedioPago = IdMedioPago;
     }
 
-    public long getIdBoletadeCompra() {return IdBoletadeCompra;}
-    public void setIdBoletadeCompra(long IdBoletadeCompra) { this.IdBoletadeCompra = IdBoletadeCompra;}
+    public long getIdBoletadeCompra() {
+        return IdBoleta;
+    }
 
-    public Date getFechaBoleta() {return FechaBoleta;}
-    public void setFechaBoleta( Date FechaBoleta) { this.FechaBoleta = FechaBoleta;}
+    public void setIdBoletadeCompra(long IdBoletadeCompra) {
+        this.IdBoleta = IdBoletadeCompra;
+    }
 
-    public int getMontoBoleta() {return MontoBoleta;}
-    public void setMontoBoleta(int montoBoleta) {this.MontoBoleta = MontoBoleta;}
+    public Date getFechaBoleta() {
+        return FechaBoleta;
+    }
 
-    public Integer getIdCarro() {return IdCarro;}
-    public void setIdCarro(Integer IdCarro) {this.IdCarro = IdCarro;}
+    public void setFechaBoleta(Date FechaBoleta) {
+        this.FechaBoleta = FechaBoleta;
+    }
 
-    public Integer getIdMedioPago() {return IdMedioPago;}
-    public void setIdMedioPago(Integer idMedioPago) {this.IdMedioPago = idMedioPago;}
+    public int getMontoBoleta() {
+        return montoboleta;
+    }
+
+    public void setMontoBoleta(int montoBoleta) {
+        this.montoboleta = montoBoleta;
+    }
+
+    public Integer getIdCarro() {
+        return IdCarro;
+    }
+
+    public void setIdCarro(Integer IdCarro) {
+        this.IdCarro = IdCarro;
+    }
+
+    public Integer getIdMedioPago() {
+        return IdMedioPago;
+    }
+
+    public void setIdMedioPago(Integer idMedioPago) {
+        this.IdMedioPago = idMedioPago;
+    }
 
     @Override
-
     public String toString() {
-        return "boleta{" +
-                "IdBoletadeCompra=" + IdBoletadeCompra +
+        return "boletadecompra{" +
+                "IdBoleta=" + IdBoleta +
                 ", FechaBoleta=" + FechaBoleta +
-                ", MontoBoleta=" + MontoBoleta +
+                ", MontoBoleta=" + montoboleta +
                 ", IdCarro=" + IdCarro +
                 ", IdMedioPago=" + IdMedioPago +
-                "}";
+                '}';
     }
 }

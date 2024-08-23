@@ -1,16 +1,16 @@
 package com.example.ProyectoDBDGrupo7.models;
 
 public class productoCarroDeCompras {
-    private long idProductoCarro;
+    private long idProducto_Carro;
     private long idProducto;
     private long idCarro;
 
     public long getIdProductoCarro() {
-        return idProductoCarro;
+        return idProducto_Carro;
     }
 
     public void setIdProductoCarro(long idProductoCarro) {
-        this.idProductoCarro = idProductoCarro;
+        this.idProducto_Carro = idProductoCarro;
     }
 
     public long getIdProducto() {
@@ -32,7 +32,7 @@ public class productoCarroDeCompras {
     @Override
     public String toString() {
         return "productoCarroDeCompras{" +
-                "idProductoCarro=" + idProductoCarro +
+                "idProductoCarro=" + idProducto_Carro +
                 ", idProducto=" + idProducto +
                 ", idCarro=" + idCarro +
                 '}';

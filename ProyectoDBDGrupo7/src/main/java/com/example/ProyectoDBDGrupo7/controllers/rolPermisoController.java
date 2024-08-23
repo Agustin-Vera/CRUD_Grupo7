@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping
+@RequestMapping("/rolPermiso")
 
 public class rolPermisoController {
     private final rolPermisoService rolPermisoService;

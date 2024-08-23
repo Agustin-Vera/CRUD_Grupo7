@@ -31,13 +31,13 @@ public class listadedeseosController {
     public List<listadeseos> GetAll()
     {return listadeseosService.GetAllLists();}
 
-    @GetMapping("/get/user{id}")
+    @GetMapping("/get/{id}")
     @ResponseBody
     public listadeseos UserList(@PathVariable int id)
     {return listadeseosService.GetListById(id);}
 
     // Delete
-    @DeleteMapping("/delete/user{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseBody
     public void Delete(@PathVariable int id)
     { listadeseosService.delete(id);}
