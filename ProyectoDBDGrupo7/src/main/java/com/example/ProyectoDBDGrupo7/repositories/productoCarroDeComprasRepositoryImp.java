@@ -73,7 +73,7 @@ public class productoCarroDeComprasRepositoryImp implements productoCarroDeCompr
     //UPDATE
     @Override
     public productoCarroDeCompras update(productoCarroDeCompras productoCarroDeCompras, int id) {
-        String sql = "UPDATE PERMISO SET IdProducto = :IdProducto WHERE IdProducto_Carro = :id";
+        String sql = "UPDATE PRODUCTO_CARRODECOMPRAS SET IdProducto = :IdProducto WHERE IdProducto_Carro = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id",id)

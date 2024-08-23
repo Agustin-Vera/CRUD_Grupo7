@@ -72,13 +72,14 @@ public class ubicacionRepositoryImp implements ubicacionRepository {
     @Override
     public ubicacion Update(ubicacion ubicacion, int idubicacion) {
         try (Connection con = sql2o.open()) {
-            String sql = "UPDATE UBICACION SET Region =: Region, Comuna =: Comuna, Calle =: Calle," +
-                    " Numero =: Numero , idusuario =: IdUsuario WHERE idubicacion = :idubicacion";
+            String sql = "UPDATE UBICACION SET region =:region, comuna =:comuna, calle =:calle," +
+                    " numero =:numero , idusuario =:idusuario WHERE idubicacion = :idubicacion";
             con.createQuery(sql, true)
-                    .addParameter("Region", ubicacion.getRegion())
-                    .addParameter("Comuna", ubicacion.getComuna())
-                    .addParameter("Calle", ubicacion.getCalle())
-                    .addParameter("Numero", ubicacion.getNumero())
+                    .addParameter("idubicacion", idubicacion)
+                    .addParameter("region", ubicacion.getRegion())
+                    .addParameter("comuna", ubicacion.getComuna())
+                    .addParameter("calle", ubicacion.getCalle())
+                    .addParameter("numero", ubicacion.getNumero())
                     .addParameter("idusuario", ubicacion.getIdUsuario())
                     .executeUpdate();
             return ubicacion;

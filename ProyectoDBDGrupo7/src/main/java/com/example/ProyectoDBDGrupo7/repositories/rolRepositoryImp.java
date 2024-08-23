@@ -75,11 +75,11 @@ public class rolRepositoryImp implements rolRepository {
     //UPDATE
     @Override
     public rol update(rol rol, int id) {
-        String sql = "UPDATE ROL SET NombreRol = :NombreRol WHERE idrol = :id";
+        String sql = "UPDATE ROL SET nombrerol = :nombrerol WHERE idrol = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id",id)
-                    .addParameter("NombreRol",rol.getNombreRol())
+                    .addParameter("nombrerol",rol.getNombreRol())
                     .executeUpdate();
             return rol;
         }

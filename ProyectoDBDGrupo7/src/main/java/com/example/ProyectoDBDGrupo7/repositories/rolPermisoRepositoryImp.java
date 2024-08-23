@@ -73,11 +73,12 @@ public class rolPermisoRepositoryImp implements rolPermisoRepository {
     //UPDATE
     @Override
     public rolPermiso update(rolPermiso rolPermiso, int id) {
-        String sql = "UPDATE ROL_PERMISO SET IdPermiso = :IdPermiso WHERE IdRolPermiso = :id";
+        String sql = "UPDATE ROL_PERMISO SET IdPermiso = :IdPermiso , IdRol =:IdRol WHERE IdRolPermiso = :id";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql)
                     .addParameter("id",id)
                     .addParameter("IdPermiso",rolPermiso.getIdPermiso())
+                    .addParameter("IdRol",rolPermiso.getIdRol())
                     .executeUpdate();
             return rolPermiso;
         }
