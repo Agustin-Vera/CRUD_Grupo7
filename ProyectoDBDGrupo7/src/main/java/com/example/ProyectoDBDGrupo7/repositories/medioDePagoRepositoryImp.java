@@ -66,15 +66,16 @@ public class medioDePagoRepositoryImp implements medioDePagoRepository {
 
     }
 
-    //UPDATE ESTA RAROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    //UPDATE
     @Override
-    public medioDePago update(medioDePago medioDePago, int id) {
-        String sql = "UPDATE MEDIO_DE_PAGO SET nombre = :nombre, detalles = :detalles WHERE idMedioPago = :id";
+    public medioDePago update(medioDePago medioDePago, int idmediopago) {
+        String sql = "UPDATE MEDIO_DE_PAGO SET nombremediopago = :nombremediopago," +
+                "descripcionmediopago  = :descripcionmediopago WHERE idmediopago = :idmediopago";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("id", id)
-                    .addParameter("nombre", medioDePago.getNombreMedioDePago())
-                    .addParameter("detalles", medioDePago.getDescripcionMedioDePago())
+                    .addParameter("idmediopago", idmediopago)
+                    .addParameter("nombremediopago", medioDePago.getNombreMedioDePago())
+                    .addParameter("descripcionmediopago", medioDePago.getDescripcionMedioDePago())
                     .executeUpdate();
             return medioDePago;
         } catch (Exception e) {

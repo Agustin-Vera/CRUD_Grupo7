@@ -13,6 +13,9 @@ public interface listadeseosRepository {
 
     listadeseos GetListForId(int IdUsuario);
 
+    //Update
+    listadeseos update(listadeseos listadeseos, int id);
+
     // Delete
     void Delete(int IdUsuario);
 }

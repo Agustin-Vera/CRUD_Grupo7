@@ -1,6 +1,7 @@
 package com.example.ProyectoDBDGrupo7.repositories;
 
 
+import com.example.ProyectoDBDGrupo7.models.carroDeCompras;
 import com.example.ProyectoDBDGrupo7.models.listadeseos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -56,6 +57,23 @@ public class listadeseosRepositoryImp implements listadeseosRepository {
             System.out.println(e);
         }
         return null;
+    }
+
+    //UPDATE
+    @Override
+    public listadeseos update(listadeseos listadeseos, int id) {
+        String sql = "UPDATE LISTA_DESEOS SET IdUsuario = :IdUsuario WHERE idlistadeseos = :id";
+        try (Connection conn = sql2o.open()) {
+            conn.createQuery(sql)
+                    .addParameter("id",id)
+                    .addParameter("IdUsuario",listadeseos.getIdUsuario())
+                    .executeUpdate();
+            return listadeseos;
+        }
+        catch (Exception e) {
+            System.out.println("Error"+e.getMessage());
+            return null;
+        }
     }
 
     // Delete

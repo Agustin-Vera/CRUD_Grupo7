@@ -27,6 +27,10 @@ public class listadeseosService {
     public listadeseos GetListById(int id)
     {return listadeseosRepository.GetListForId(id);}
 
+    //Update
+    public listadeseos updateListaDeseos(listadeseos listadeseos, int id)
+    {return listadeseosRepository.update(listadeseos, id);}
+
     // Delete
     public void delete(int id)
     { listadeseosRepository.Delete(id);}
