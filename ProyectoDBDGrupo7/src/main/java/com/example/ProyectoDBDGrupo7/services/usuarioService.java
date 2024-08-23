@@ -44,4 +44,9 @@ public class usuarioService {
     public void deleteUser(int id) {
         usuarioRepository.borrarUsuario(id);
     }
+
+    //LOGIN
+    public boolean loginUser(String correo, String contraseña) {
+        return usuarioRepository.loginUsuario(correo,contraseña);
+    }
 }

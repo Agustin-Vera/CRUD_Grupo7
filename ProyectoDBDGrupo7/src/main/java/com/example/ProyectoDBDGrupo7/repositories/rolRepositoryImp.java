@@ -18,13 +18,13 @@ public class rolRepositoryImp implements rolRepository {
     //Create
     @Override
     public rol createRol(rol rol) {
-        String sql = "INSERT INTO ROL(NombreRol)\n" +
-                "VALUES (:NombreRol)" +
-                "RETURNING NombreRol;";
+        String sql = "INSERT INTO ROL(nombrerol)\n" +
+                "VALUES (:nombrerol)" +
+                "RETURNING idrol;";
 
         try (Connection con = sql2o.open()) {
             long id = con.createQuery(sql, true)
-                    .addParameter("NombreRol", rol.getNombreRol())
+                    .addParameter("nombrerol", rol.getNombreRol())
                     .executeUpdate()
                     .getKey(Long.class);
 
@@ -92,7 +92,7 @@ public class rolRepositoryImp implements rolRepository {
     //DELETE
     @Override
     public void deleterol(int id) {
-        String sql = "DELETE FROM ROL WHERE NombreRol.Idrol  = :id";
+        String sql = "DELETE FROM ROL WHERE idrol = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).addParameter("id",id).executeUpdate();
         }

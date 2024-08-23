@@ -15,6 +15,10 @@ public interface usuarioRepository {
 
     // UPDATE
     usuario update(usuario usuario, int id);
+
     // DELETE
     void borrarUsuario(int id);
+
+    //LOGIN
+    boolean loginUsuario(String correo, String contraseña);
 }

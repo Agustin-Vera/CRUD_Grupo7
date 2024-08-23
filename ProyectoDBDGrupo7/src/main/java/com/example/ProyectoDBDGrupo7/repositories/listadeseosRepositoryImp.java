@@ -60,10 +60,10 @@ public class listadeseosRepositoryImp implements listadeseosRepository {
 
     // Delete
     @Override
-    public void Delete(int IdUsuario){
+    public void Delete(int idlistadeseos){
         try (Connection con = sql2o.open()) {
-            String sql = "DELETE FROM lista_deseos WHERE IdUsuario = :IdUsuario";
-            con.createQuery(sql).addParameter("IdUsuario",IdUsuario).executeUpdate();
+            String sql = "DELETE FROM lista_deseos WHERE idlistadeseos = :idlistadeseos";
+            con.createQuery(sql).addParameter("idlistadeseos",idlistadeseos).executeUpdate();
         }catch (Exception e){
             System.out.println(e);
         }

@@ -43,12 +43,12 @@ public class ubicacionController {
     }
 
     // Delete
-    @DeleteMapping("/delete/user{id}")
+    @DeleteMapping("/delete/user/{id}")
     @ResponseBody
     public void DeleteUserLocations(@PathVariable int id)
     { ubicacionService.DeleteAllForUser(id);}
 
-    @DeleteMapping("/delete/location{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseBody
     public void DeleteLocation(@PathVariable int id)
     { ubicacionService.deleteForLocationId(id);}

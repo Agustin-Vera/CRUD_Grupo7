@@ -92,7 +92,7 @@ public class carroDeCompraRepositoryImp implements carroDeCompraRepository {
     //DELETE
     @Override
     public void deletecarroDeCompras(int id) {
-        String sql = "DELETE FROM PRODUCTO_CARRODECOMPRAS WHERE PRODUCTO_CARRODECOMPRAS.idCarro  = :id";
+        String sql = "DELETE FROM CARRO_DE_COMPRAS WHERE idcarro  = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).addParameter("id",id).executeUpdate();
         }

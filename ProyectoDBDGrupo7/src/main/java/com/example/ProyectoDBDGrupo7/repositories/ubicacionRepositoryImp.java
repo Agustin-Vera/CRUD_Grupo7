@@ -73,13 +73,13 @@ public class ubicacionRepositoryImp implements ubicacionRepository {
     public ubicacion Update(ubicacion ubicacion, int idubicacion) {
         try (Connection con = sql2o.open()) {
             String sql = "UPDATE UBICACION SET Region =: Region, Comuna =: Comuna, Calle =: Calle," +
-                    " Numero =: Numero , IdUsuario =: IdUsuario WHERE IdUbicacion = :idubicacion";
+                    " Numero =: Numero , idusuario =: IdUsuario WHERE idubicacion = :idubicacion";
             con.createQuery(sql, true)
                     .addParameter("Region", ubicacion.getRegion())
                     .addParameter("Comuna", ubicacion.getComuna())
                     .addParameter("Calle", ubicacion.getCalle())
                     .addParameter("Numero", ubicacion.getNumero())
-                    .addParameter("IdUsuario", ubicacion.getIdUsuario())
+                    .addParameter("idusuario", ubicacion.getIdUsuario())
                     .executeUpdate();
             return ubicacion;
         }catch (Exception e) {
@@ -94,8 +94,8 @@ public class ubicacionRepositoryImp implements ubicacionRepository {
     @Override
     public void Delete(int idusuario) {
         try (Connection con = sql2o.open()) {
-            String sql = "DELETE FROM UBICACION WHERE IdUsuario = :idusuario";
-            con.createQuery(sql).addParameter("IdUsuario", idusuario).executeUpdate();
+            String sql = "DELETE FROM UBICACION WHERE idusuario = :idusuario";
+            con.createQuery(sql).addParameter("idusuario", idusuario).executeUpdate();
         }catch (Exception e) {
             System.out.println(e);
         }
@@ -104,8 +104,8 @@ public class ubicacionRepositoryImp implements ubicacionRepository {
     @Override
     public void DeleteForLocationId(int idubicacion) {
         try (Connection con = sql2o.open()) {
-            String sql = "Delete FROM UBICACION WHERE IdUbicacion = :idubicacion";
-            con.createQuery(sql).addParameter("IdUbicacion", idubicacion).executeUpdate();
+            String sql = "Delete FROM UBICACION WHERE idubicacion = :idubicacion";
+            con.createQuery(sql).addParameter("idubicacion", idubicacion).executeUpdate();
         }catch (Exception e) {
             System.out.println(e);
         }

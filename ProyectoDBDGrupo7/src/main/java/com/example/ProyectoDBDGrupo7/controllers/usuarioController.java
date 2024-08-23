@@ -58,4 +58,10 @@ public class usuarioController {
     public void delete(@PathVariable int id) {
         usuarioService.deleteUser(id);
     }
+
+    //LOGIN
+    @PostMapping("/login")
+    public boolean login(@RequestBody usuario usuario) {
+        return usuarioService.loginUser(usuario.getCorreo(),usuario.getContraseña());
+    }
 }
